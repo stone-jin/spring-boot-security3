@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fedfans.domain.mapper.UserMapper">
+    <resultMap id="ResultBaseType" type="com.fedfans.domain.UserPO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="enabled" jdbcType="BOOLEAN" property="enabled"/>
+        <result column="createTime" jdbcType="BIGINT" property="createTime"/>
+        <result column="updateTime" jdbcType="BIGINT" property="updateTime"/>
+    </resultMap>
+
+    <select id="getUserByName" parameterType="map" resultMap="ResultBaseType">
+        SELECT id, username, password, enabled, createTime,updateTime FROM TB_SECURITY2_USER WHERE username=#{username}
+    </select>
+</mapper>
